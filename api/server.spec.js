@@ -31,8 +31,24 @@ describe('server.js', () => {
 
       expect(res.type).toBe('application/json')
     });
+  });
+
+  describe('delete /api/people/:id', () => {
+    
+    it('should return status OK 200', async () => {
+      const res = await request(server).delete('/api/people/1');
+
+      expect(res.status).toBe(200);
+    });
+
+    it('should return the id of the person deleted', async () => {
+      const res = await request(server).delete('/api/people/1');
+
+      expect(res).not.toBe(null);
+    });
 
     
+
   });
   
 });
